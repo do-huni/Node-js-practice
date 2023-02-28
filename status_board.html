@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang = 'ko'>
+<head>
+	<meta charset ='UTF-8'>
+	<title>status_board</title>
+	<link rel = 'stylesheet' href = './style.css'>
+</head>
+<body>
+<div class = 'page'>
+<div class = 'subpage'>
+<h1>
+	간이 일종 현황판
+	</h1>
+<div id ='dayday'>day</div>
+<div class = 'boxes'>
+	<div class = 'A_box'>A</div>
+	<div class = 'B_box'>B</div>
+	<div class = 'C_box'>C</div>
+	<div class = 'D_box'>D</div>
+	<div class = 'E_box'>E</div>
+	<div class = 'oil'>식용유</div>	
+	<div class = 'door'></div>
+</div>
+
+<table style = 'float:left;'>
+	<thead>
+		<tr>
+			<th width ='12%'>장소</th>
+			<th width = '56%'>이름</th>
+			<th width = '16%'>유통기한</th>
+			<th width = '26%'>수량</th>
+		</tr>
+	</thead>
+	<tbody id = 'Atbody'></tbody>
+</table>
+
+	
+<table style = 'float:right;'>
+	<thead>
+		<tr>
+			<th width ='12%'>장소</th>
+			<th width = '56%'>이름</th>
+			<th width = '16%'>유통기한</th>
+			<th width = '26%'>수량</th>
+		</tr>
+	</thead>
+	<tbody id = 'Btbody'></tbody>
+</table>
+<br>
+
+<table style = 'float:right;'>
+	<thead>
+		<tr>
+			<th width ='12%'>장소</th>
+			<th width = '56%'>이름</th>
+			<th width = '16%'>유통기한</th>
+			<th width = '16%'>수량</th>
+		</tr>
+	</thead>
+	<tbody id = 'Ctbody'></tbody>
+</table>
+</div>
+</div>
+</body>
+<script>
+
+//시간 설정
+let today = new Date();   
+document.getElementById('dayday').innerHTML = AddDays(today.toLocaleDateString()).toLocaleDateString();
+	
+function AddDays(date) {
+    // date는 문자열로 받는다 ex, '2020-10-15'
+    var result = new Date(date);
+    result.setDate(result.getDate() + 1);
+    return result;
+}
+	
+// LOCALSTORAGE에서 JSON 가져오기
+unetMembers = [...JSON.parse(localStorage.getItem('members'))];
+
+	
+//다 합친 함수
+function addTable(place, alpha,col,tid){
+	const result = unetMembers.filter( member => member.dept == place);
+	for (let i in Object.keys(result)) {
+		add_row(i,result,tid);
+	}
+	addColumn(alpha,col,tid);
+}
+	
+
+
+/* 테이블 행 추가 함수 */
+  function add_row(i,result,tid) {
+    const my_tbody = document.getElementById(tid);
+    // var row = my_tbody.insertRow(0); // 상단에 추가
+    const row = my_tbody.insertRow( my_tbody.rows.length ); // 하단에 추가
+    const name = row.insertCell(0);
+    const dept = row.insertCell(1);
+	const startdate = row.insertCell(1);
+    name.innerHTML = result[i]['name'];
+    dept.innerHTML = result[i]['dept'];
+	startdate.innerHTML = result[i]['startDate'];
+  }
+
+
+function addColumn(i, col,tid){
+	const table = document.getElementById(tid)
+	const newCell = table.rows[0].insertCell(0);
+	newCell.rowSpan = 1000;
+	newCell.style.background = col;
+	newCell.innerText = i;
+}
+addTable('경영관리','A','#FF5B87','Atbody');
+addTable('임원','B','#FF9653','Btbody');
+addTable('영업본부','C','#FFEA6F','Ctbody');
+</script>
+</html>
