@@ -1,0 +1,161 @@
+body {
+
+margin: 0;
+
+padding: 0;
+
+}
+
+* {
+
+box-sizing: border-box;
+
+-moz-box-sizing: border-box;
+
+}
+
+.page {
+
+width: 21cm;
+
+min-height: 29.7cm;
+
+padding: 2cm;
+
+margin: 0 auto;
+
+background:#eee;
+
+}
+
+.subpage {
+
+border: 2px red solid;
+
+background:#fff;   
+
+height: 257mm;
+
+}
+
+
+
+@page {
+
+size: A4;
+
+margin: 0;
+
+}
+
+@media print {
+
+html, body {
+
+width: 210mm;
+
+height: 297mm;
+
+}
+
+.page {
+
+margin: 0;
+
+border: initial;
+
+width: initial;
+
+min-height: initial;
+
+box-shadow: initial;
+
+background: initial;
+
+page-break-after: always;
+
+}
+
+}
+h1{
+	text-align: center;
+}
+.boxes{
+	margin: 1mm auto;
+	padding: 2.5cm;
+	border: 1px solid black;
+	width: 90%;
+	position: relative;
+	text-align: center;
+	line-height: 14mm;
+	font-weight: bold;
+}
+.A_box{
+	position: absolute;
+	border: 1px solid black;
+	background-color: #FF5B87;
+	width: 48mm;
+	height: 14mm;
+	left: 1mm;
+	top: 1mm;
+}
+.B_box{
+	position: absolute;
+	border: 1px solid black;
+	background-color: #FF9653;
+	width: 48mm;
+	height: 14mm;
+	left: 51mm;
+	top: 1mm;
+}
+.C_box{
+	position: absolute;
+	border: 1px solid black;
+	background-color: #FFEA6F;
+	width: 48mm;
+	height: 14mm;
+	left: 101mm;
+	top: 1mm;
+}
+.D_box{
+	position: absolute;
+	border: 1px solid black;
+	background-color: #A2E9FF;
+	width: 48mm;
+	height: 14mm;
+	left: 51mm;
+	top: 35mm;
+}
+.E_box{
+	position: absolute;
+	border: 1px solid black;
+	background-color: #E8D2FF;
+	width: 48mm;
+	height: 14mm;
+	left: 101mm;
+	top: 35mm;
+}
+.oil{
+	border: 1px solid black;
+	position: absolute;
+	background-color: #BBFFA2;
+	width: 23mm;
+	height: 14mm;
+	left: 26mm;
+	top: 35mm;
+}
+.door{
+	border: 1px solid black;
+	position: absolute;
+	background-color: #D3D3D3;
+	width: 23mm;
+	height: 2mm;
+	left: 1mm;
+	top: 47mm;
+}
+#dayday{
+	text-align: right;
+}
+table {margin: 1mm; font-size: 8pt; display: table; width: 48%; max-width: 48%; border: 1px solid #ddd;}
+table > thead > tr > th {border: 1px solid black;}
+table > tbody > tr > td {border: 1px solid black; text-align: center;}
